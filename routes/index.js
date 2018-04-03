@@ -7,7 +7,7 @@ module.exports = function (app) {
         db.query(sql, function (err, result) {
             console.log(result);
             res.render('pages/index', {
-                message: result,
+                message: result[0].title,
             });
         })
     });
