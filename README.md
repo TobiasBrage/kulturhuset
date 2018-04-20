@@ -2,6 +2,8 @@
 
 Der er intet admin panel. Valgte at fokusere på at afprøve en masse og arbejde med ting fra flere vinkler, det betød at jeg flere gange startede forfra med bestemte funktioner på siden, eksempelvis booking systemet.
 
+Husk evt. at ændre db_config.js filen i config mappen.
+
 Jeg benytter mig af express.
 
 ## Routes
