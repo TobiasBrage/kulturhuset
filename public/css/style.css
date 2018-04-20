@@ -289,6 +289,9 @@ footer {
 .newsItem {
   float:left;
   width:100%;
+  margin:10px 0 0 0;
+  padding:0 0 10px 0;
+  border-bottom:1px solid #eee;
 }
 
 .newsTitle {
@@ -305,7 +308,6 @@ footer {
   color:#555;
   font-size:18px;
 }
-
 
 .newsLink {
   float:left;

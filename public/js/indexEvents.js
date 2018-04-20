@@ -41,10 +41,6 @@ fetch('http://localhost:3000/news')
     let newsLong = false;
     newsData.forEach(element => {
         let newsDate = new Date(Number(element.unix));
-        let curDate = new Date();
-
-        
-
         if(element.content.length > 200) {
             newsContent = element.content.substring(0,200)+'...';
             newsLong = true;
@@ -52,15 +48,13 @@ fetch('http://localhost:3000/news')
             newsContent = element.content;
             newsLong = false;
         }
-        document.getElementById("newsContainer").innerHTML += `
-        <li class="newsItem">
-            <h2 class="newsTitle">${element.title}</h2>
-            <p class="newsContent">${newsContent}</p>`;
+
+        let newsHtml = `<li class="newsItem"><h2 class="newsTitle">${element.title}</h2><p class="newsContent">${newsContent}</p>`;
         if(newsLong == true) {
-            document.getElementById("newsContainer").innerHTML += `<a class="newsLink" href="#">Læs mere her</a>`; 
+            newsHtml += `<a class="newsLink" href="#">Læs mere her</a>`; 
         }
-        document.getElementById("newsContainer").innerHTML += `<span class="newsDate">${newsDate.getDate()}</span>`;
-        document.getElementById("newsContainer").innerHTML += `</li>`;
+        newsHtml += `<span class="newsDate">${newsDate.getDate()} ${monthName[newsDate.getMonth()+1]} ${newsDate.getFullYear()}</span></li>`;
+        document.getElementById("newsContainer").innerHTML += newsHtml;
     });
 });
 
@@ -72,3 +66,6 @@ function dateTimeDigit(dateTime) {
         return dateTime;
     }
 }
+
+var d = '2018-05-23';
+console.log(new Date(d).valueOf());

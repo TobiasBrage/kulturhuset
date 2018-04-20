@@ -80,6 +80,9 @@ fetch('http://localhost:3000/stage')
         bookingCanvas.innerHTML = bookingHtml;
         let canvasWidth = seatCol*43-30;
         bookingCanvas.style.width = `${canvasWidth}px`;
+        if(bookingCanvas.innerHTML == '') {
+            location.reload();
+        }
     });
 });
 

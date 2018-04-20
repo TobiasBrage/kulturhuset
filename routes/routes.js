@@ -1,3 +1,5 @@
+const nodemailer = require('nodemailer');
+
 module.exports = function (app) {
 
     var eventId;
@@ -66,6 +68,7 @@ module.exports = function (app) {
         let curDate = new Date().getTime();
         let lastBookingId;
         let token = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 255)+new Date().getTime();
+        let emailMessage;
 
         // insert into booking
         db.query(insertBookingSql,[eventId, name, email, phone, curDate, token] ,function (err) {
@@ -86,6 +89,8 @@ module.exports = function (app) {
                                 }
                             })
                         });
+                        emailMessage = `Tak for din bestilling ${name}.`;
+                        confirmMail(email, emailMessage);
                         res.send({'token':token});
                     }
                 })
@@ -118,4 +123,29 @@ function convertDate(dato) {
     } else {
         return `0${dato}`;
     }
+}
+
+function confirmMail(mailto, message) {
+    var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'gamerfreaq@gmail.com',
+        pass: 'S8J-qpB-d8x-LBW'
+    }
+    });
+
+    var mailOptions = {
+        from: 'kulturhuset@mail.com',
+        to: mailto,
+        subject: 'Ordre bekræftigelse',
+        text: message
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+        console.log(error);
+        } else {
+        console.log('Email sent: ' + info.response);
+        }
+    });
 }
