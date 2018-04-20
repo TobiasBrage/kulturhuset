@@ -1,7 +1,318 @@
 @charset "UTF-8";
 
-table {
-  border-spacing: 10px;
-  border-collapse: separate;
-  background-color: #eeeeee;
+* {
+  outline:0;
+}
+
+body {
+  background-color:#fff;
+}
+
+#navLogo {
+  width:30px;
+  height:30px;
+}
+
+.carousel-target {
+  cursor: pointer;
+}
+
+.carouselImage {
+  width:100%;
+  height:auto;
+}
+
+.homeMain {
+  min-height:200px;
+}
+
+.mainContainer {
+  margin-top:20px;
+}
+
+#eventTitle {
+  text-align:center;
+  color:#555;
+  font-size:24px;
+}
+
+.calendarHeader {
+  padding-top:10px;
+  padding-bottom:5px;
+}
+
+.calendarLeft {
+  background-image:url('../img/calendarLeft.svg');
+  background-size: contain;
+  background-position: left;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.calendarRight {
+  background-image:url('../img/calendarRight.svg');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.calendarDate {
+  text-align:center;
+  color:#555;
+  font-size:20px;
+}
+
+.calendarContent {
+  margin-top:20px;
+}
+
+.calendarEvent {
+  font-size:20px;
+  color:#555;
+  border-bottom:1px solid #eee;
+  padding-bottom:5px;
+}
+
+#newsTitle {
+  text-align:center;
+  color:#555;
+  font-size:24px;
+  float:left;
+  width:100%;
+}
+
+#bookingTitle {
+  text-align:center;
+  color:#555;
+  font-size:24px;
+  float:left;
+  width:100%;
+}
+
+#bookingContainer {
+  min-width:10px;
+  height:auto;
+  border:1px solid #eee;
+  float:left;
+}
+
+.bookRow {
+  width:100%;
+  float:left;
+}
+
+.bookSeat {
+  width:30px;
+  height:28px;
+  color:#fff;
+  font-size:10px;
+  margin:0 0 10px 8px;
+  padding:8px 3px 8px 3px;
+  border-radius:3px;
+  text-align:center;
+  float:left;
+}
+
+.stagePath {
+  width:100%;
+  float:left;
+  height:30px;
+}
+
+.seatRow {
+  float:left;
+  width:30px;
+  padding:4px 0 4px 8px;
+  text-align:center;
+  color:#999;
+}
+
+.seatAvaible {
+  cursor: pointer;
+  background-image:url('../img/seatAvailable.png');
+  background-size:36px 36px;
+}
+
+.seatTaken {
+  background-image:url('../img/seatTaken.png');
+  background-size:36px 36px;
+}
+
+.seatBooked {
+  background-image:url('../img/seatBooked.png');
+  background-size:36px 36px;
+}
+
+.stage {
+  width:96%;
+  height:30px;
+  float:left;
+  background-color:#eee;
+  text-align: center;
+  color:#999;
+  border-radius:5px;
+  margin:5px 2% 50px 2%;
+}
+
+.bookingMain {
+  border-right:1px solid #ddd;
+}
+
+#bookingDate {
+  width:100%;
+  float:left;
+  text-align:center;
+  color:#999;
+}
+
+#bookingPrice {
+  float:left;
+  width:100%;
+  color:#555;
+  font-size:20px;
+  text-align:center;
+}
+
+#bookingSeats {
+  float:left;
+  width:100%;
+  color:#555;
+  font-size:20px;
+  text-align:center;
+}
+
+#bookingSeatsId {
+  float:left;
+  width:100%;
+  color:#999;
+  font-size:16px;
+  text-align:center;
+}
+
+#bookingSeatPrice {
+  float:left;
+  width:100%;
+  color:#999;
+  font-size:20px;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.bookingLabel {
+  width:100%;
+  float:left;
+  color:#555;
+}
+
+.bookingTextField {
+  width:100%;
+  float:left;
+  color:#555;
+  padding:5px;
+  border:0;
+  border-bottom:1px solid #ddd;
+  margin-bottom:10px;
+}
+
+#bookingSubmit {
+  background-color:#C1DEAC;
+  border:1px solid #9fc583;
+  color:#5d9137;
+  padding:5px 10px 5px 10px;
+  cursor: pointer;
+  border-radius:3px;
+  width:100%;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.eventMain {
+  width:100%;
+  min-height:20px;
+  cursor: pointer;
+  text-decoration: none;
+  float:left;
+  margin:0 0 10px 0;
+}
+
+.eventDate {
+  width:25%;
+  min-height:20px;
+  float:left;
+  background-color:#efefef;
+}
+
+.eventDay {
+  width:100%;
+  float:left;
+  text-align:center;
+  color:#555;
+  padding:8px 0 0 0;
+}
+
+.eventMon {
+  width:100%;
+  float:left;
+  text-align:center;
+  color:#555;
+  padding:0 0 8px 0;
+}
+
+.eventArtist {
+  width:75%;
+  float:left;
+  min-height:20px;
+  font-size:2vh;
+  padding:20px 0 0 10px;
+  color:#555;
+}
+
+.indexMain {
+  float:left;
+  min-height:500px;
+  width:100%;
+}
+
+footer {
+  text-align: center;
+  margin:50px 0 50px 0;
+  color:#999;
+}
+
+#newsContainer {
+  float:left;
+  width:100%;
+  list-style: none;
+}
+
+.newsItem {
+  float:left;
+  width:100%;
+}
+
+.newsTitle {
+  float:left;
+  width:93%;
+  text-align: center;
+  color:#555;
+  font-size:22px;
+}
+
+.newsContent {
+  float:left;
+  width:100%;
+  color:#555;
+  font-size:18px;
+}
+
+
+.newsLink {
+  float:left;
+}
+
+.newsDate {
+  float:right;
+  color:#999;
+  font-size:16px;
 }

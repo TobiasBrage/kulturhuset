@@ -1,4 +1,5 @@
 const express    = require('express');
+const session    = require('express-session');
 const app        = express();
 const path       = require('path');
 const bodyParser = require('body-parser');
@@ -8,8 +9,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-require("./routes/index") (app);
-require("./routes/events") (app);
+require("./routes/routes") (app);
 require("./config/db_config") (app);
 
 app.use(express.static('public'));

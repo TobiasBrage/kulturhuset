@@ -3,11 +3,10 @@
 module.exports = function (app) {
 
     app.get('/', function (req, res) {
-        let sql = 'SELECT * FROM event';
+        let sql = 'SELECT * FROM event ORDER BY date ASC';
         db.query(sql, function (err, result) {
-            console.log(result);
             res.render('pages/index', {
-                message: result[0].title,
+                eventObj: result
             });
         })
     });
@@ -15,16 +14,16 @@ module.exports = function (app) {
 // var transporter = nodemailer.createTransport({
 //     service: 'gmail',
 //     auth: {
-//         user: 'gamerfreaq@gmail.com',
-//         pass: 'S8J-qpB-d8x-LBW'
+//         user: 'gmail',
+//         pass: 'password'
 //     }
 // });
 
 // var mailOptions = {
-//     from: 'kage@gmail.com',
-//     to: 'tobiasbrage@me.com',
-//     subject: 'Sending Email using Node.js',
-//     text: 'That was easy!'
+//     from: 'frommail',
+//     to: 'tomail',
+//     subject: 'subject,
+//     text: 'content'
 // };
 
 // transporter.sendMail(mailOptions, function(error, info){

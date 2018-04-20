@@ -4,17 +4,94 @@
     <% include ../partials/head %>
   </head>
   <body>
-    <header>
-      <% include ../partials/header %>
-    </header>
 
-    <main>
-      <%= message %>
-    </main>
+    <div class="row carouselContainer">
+        <div class="col-md-10 offset-md-1 test1">
+
+        <div id="homeCarousel" class="carousel slide fluid" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/carousel1.jpg" alt="Østre Toten" class="carouselImage">
+            </div>
+            <div class="carousel-item">
+              <img src="img/carousel2.jpg" alt="Koncerter" class="carouselImage">
+            </div>
+            <div class="carousel-item">
+              <img src="img/carousel3.jpg" alt="Biograf" class="carouselImage">
+            </div>
+          </div>
+      
+          <a class="carousel-control-prev carousel-control" href="#homeCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next carousel-control" href="#homeCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fluid">
+            <a class="navbar-brand" href="../">
+              Østre Toten
+            </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="../">Forside <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Arrangementer
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="navEventDrop"></div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+      <div class="row mainContainer">
+
+        <div class="col-md-10 offset-md-1">
+
+          <div class="row">
+
+            <div class="col-md-4 indexEvent">
+              <div class="col-md-12">
+                <h2 id="eventTitle">Arrangementer</h2>
+                <div class="col-md-12 calendarContent" id="calendarContent"> <!-- calendar content -->
+                  <div class="col-md-12"  id="calendarEvent"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-7 offset-md-1 indexMain">
+              <h2 id="newsTitle">Nyheder</h2>
+              <ul id="newsContainer">
+                
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
 
     <footer>
       <% include ../partials/footer %>
     </footer>
     <% include ../partials/scripts %>
+    <script src="js/indexEvents.js"></script>
   </body>
 </html>
