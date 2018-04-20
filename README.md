@@ -69,7 +69,7 @@ Jeg benytter mig af express.
 
 Der er flere ting jeg gerne vil lave om, eksempelvis.
 
-* Alle datoer og tidspunkter i databsen er i unix.
+* Alle datoer og tidspunkter i databsen skal være i unix.
 * En komplet bekræftigelses side når bookingen er gennemført.
 
 
