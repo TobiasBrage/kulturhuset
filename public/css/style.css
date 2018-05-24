@@ -354,3 +354,56 @@ footer {
   float:left;
   cursor: pointer;
 }
+
+#loginContainer {
+  width:500px;
+  min-height:230px;
+  margin:50px auto 0 auto;
+}
+
+#loginContainer h1 {
+  width:500px;
+  float:left;
+  color:#555;
+  font-size:28px;
+  text-align: center;
+  font-weight: 200;
+}
+
+#loginUsername {
+  width:500px;
+  float:left;
+  margin:0 0 10px 0;
+  padding:12px;
+  color:#555;
+  border:1px solid #53AB68;
+}
+
+.loginLabel {
+  width:500px;
+  float:left;
+  margin:10px 0 10px 0;
+  color:#62C87A;
+}
+
+#loginPassword {
+  width:400px;
+  float:left;
+  margin:0 0 10px 0;
+  padding:12px;
+  color:#555;
+  border:1px solid #53AB68;
+  border-right:0;
+}
+
+#loginSubmit {
+  width:100px;
+  float:right;
+  padding:12px;
+  background-color:transparent;
+  border:0;
+  color:#fff;
+  background-color:#62C87A;
+  border:1px solid #53AB68;
+  cursor: pointer;
+}

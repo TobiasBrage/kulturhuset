@@ -14,6 +14,14 @@ module.exports = function (app) {
         })
     }); // index
 
+    app.get('/login', function (req, res) {
+        res.render('pages/login');
+    }); // login
+
+    app.get('/cms', function (req, res) {
+        res.render('pages/cms');
+    }); // cms logged in
+
     app.get('/booking', function (req, res) {
         eventId = req.query.event;
         let sqlAllEvents = 'SELECT * FROM event ORDER BY date ASC';
@@ -55,6 +63,31 @@ module.exports = function (app) {
             res.send(eventDataResult);
         })
     }); // JSON event data
+
+    app.post('/cms/login', function (req, res) {
+        let username = req.body.username;
+        let password = req.body.password;
+        let token = req.body.token;
+        let sqlFindUser = 'SELECT * FROM cms_user WHERE username = ? AND password = ? LIMIT 1';
+        let sqlInsertToken = `INSERT INTO login_token VALUES ('', ?, ?)`;
+        let sqlDeleteToken = `DELETE FROM login_token WHERE userId = ?`;
+        db.query(sqlFindUser, [username, password], function (err, cmsUserResult) {
+            db.query(sqlDeleteToken, [cmsUserResult[0].id], function (err, deleteTokenResult) {
+                console.log(deleteTokenResult);
+                if(!err) {
+                    if(cmsUserResult.length == 1) {
+                        db.query(sqlInsertToken, [cmsUserResult[0].id, token], function (err, tokenResult) {
+                            if(!err) {
+                                res.send(`{"message":"success"}`);
+                            }
+                        });
+                    } else {
+                        res.send(`{"message":"no match"}`);
+                    }
+                }
+            });
+        });
+    }); // POST cms login
 
     app.post('/booking', function (req, res) {
         let seats = req.body.seats;
