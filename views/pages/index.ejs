@@ -73,6 +73,14 @@
                   <div class="col-md-12"  id="calendarEvent"></div>
                 </div>
               </div>
+
+              <div class="col-md-12">
+                <h2 id="letterTitle">Nyhedsbrev</h2>
+                <div class="col-md-12 newsLetterContent" id="newsLetterContent"> <!-- nyhedsbrev -->
+                  <input type="email" placeholder="email" id="letterEmail">
+                  <input type="button" value="Tilmeld" id="letterSubmit">
+                </div>
+              </div>
             </div>
 
             <div class="col-md-7 offset-md-1 indexMain">
@@ -92,6 +100,7 @@
       <% include ../partials/footer %>
     </footer>
     <% include ../partials/scripts %>
+    <script src="js/validating.js"></script>
     <script src="js/indexEvents.js"></script>
   </body>
 </html>

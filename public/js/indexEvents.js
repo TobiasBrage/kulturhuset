@@ -1,4 +1,6 @@
 let monthName = ['none', 'jan', 'feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec',];
+let headers = new Headers();
+headers.append('Content-Type', 'application/json');
 
 fetch('http://localhost:3000/events')
 .then(function(response) {
@@ -58,6 +60,39 @@ fetch('http://localhost:3000/news')
     });
 });
 
+
+document.querySelector('#letterSubmit').addEventListener('click', (event) => {
+    const letterEmail = document.getElementById("letterEmail");
+    let unix = createUnix(`${getYear()}-${twoDigit(getMonth()+1)}-${twoDigit(getDate())}T${twoDigit(getHours())}:${twoDigit(getMinutes())}:00Z`);
+    console.log(unix);
+    if(isEmail(letterEmail.value) == true) {
+        let init = {
+            method: 'POST',
+            headers: headers,
+            body: `{"email":"${letterEmail.value}","unix":"${unix}","token":"${createToken()}"}`,
+            cache: 'no-cache',
+            mode: 'cors'
+        };
+        let request = new Request('http://localhost:3000/newsletter', init);
+        fetch(request)
+        .then(response => {
+            return response.json();
+        })
+        .then((data) => { 
+            if(data.message == 'success') {
+                alert('Du er nu tilmeldt vores nyhedsbrev.'); 
+                letterEmail.value = '';
+            } else { 
+                if(data.error.includes("Duplicate entry")) {
+                    alert('Emailen eksisterer allerede i vores system. ');
+                }
+            }
+        });
+    } else {
+        alert('Du har indtastet en ugyldig email adresse.');
+    }
+});
+
 function dateTimeDigit(dateTime) {
     dateTime = dateTime.toString();
     if(dateTime.startsWith('0')) {
@@ -66,6 +101,3 @@ function dateTimeDigit(dateTime) {
         return dateTime;
     }
 }
-
-var d = '2018-05-23';
-console.log(new Date(d).valueOf());

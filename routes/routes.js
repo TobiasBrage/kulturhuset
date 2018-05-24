@@ -114,6 +114,30 @@ module.exports = function (app) {
             res.send(result);
         })
     }); // JSON news
+
+    app.post('/newsletter', function (req, res) {
+        let email = req.body.email;
+        let unix = req.body.unix;
+        let token = req.body.token;
+        let message = `Tak fordi at du har tilmeldt dig vores nyhedsbrev. \n http://localhost:3000/newsletter/remove?token=${token} klik på linket for at framelde dig.`;
+        let insertLetter = `INSERT INTO news_letter VALUES ('', ?, ?, ?)`;
+        db.query(insertLetter,[email, unix, token] ,function (err, result) {
+            if(err)
+                res.send(`{"message":"error", "error":"${err}"}`);
+            else
+                newsletterMail(`${email}`,message);
+                res.send(`{"message":"success"}`);
+        })
+    }); // POST newsletter
+
+    app.get('/newsletter/remove', function (req, res) {
+        let newsRemove = `DELETE FROM news_letter WHERE token = ?`;
+        db.query(newsRemove, [req.query.token], function (err, result) {
+            if(err)
+                console.log(err);
+        })
+        res.send('Du er nu frameldt vores nyhedsbrev.');
+    }); // newsletter remove user
 };
 
 function convertDate(dato) {
@@ -138,6 +162,31 @@ function confirmMail(mailto, message) {
         from: 'kulturhuset@mail.com',
         to: mailto,
         subject: 'Ordre bekræftigelse',
+        text: message
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+        console.log(error);
+        } else {
+        console.log('Email sent: ' + info.response);
+        }
+    });
+}
+
+function newsletterMail(mailto, message) {
+    var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'gamerfreaq@gmail.com',
+        pass: 'S8J-qpB-d8x-LBW'
+    }
+    });
+
+    var mailOptions = {
+        from: 'kulturhuset@mail.com',
+        to: mailto,
+        subject: 'Nyhedsbrev',
         text: message
     };
 
